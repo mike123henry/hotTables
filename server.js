@@ -1,53 +1,72 @@
-// Dependencies
-// =============================================================
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
+/* Instructions:
 
-// Sets up the Express App
-// =============================================================
+Today you will be building a Node / Express based web applications for handling reservation requests.
+
+Your application will be made up of two parts: 1) A front-end set of HTML/CSS/JS pages for entering and viewing data and 2) A back-end composed of Node/Express and basic JS for storing, updating, and relaying reservation data.
+
+Spend the time necessary to map this application out. Consider the concepts we've covered in class so far:
+
+Servers
+Routing
+APIs
+AJAX (GET and POST Requests)
+You should be referencing the code from the previous Star Wars application.
+
+Feel encouraged to use the following application as a reference: http://hot-restaurant.herokuapp.com/
+
+Note: We know this is a hard activity. We know you aren't yet comfortable with Node or Express. But push yourself. The best way to learn is to push through the discomfort and BUILD! Ask for help when you need it. We're here to help you through the process. */ 
+
+var express= require("express");
+var bodyParser = require("body-parser");
+var path = require("path");
+
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = 3000;
 
-// Sets up the Express app to handle data parsing 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-// Star Wars Characters (DATA)
-// =============================================================
-var characters = [
-
-	{
-		routeName: "yoda",
-		name: "Yoda",
-		role: "Jedi Master",
-		age: 900,
-		forcePoints: 2000		
-	},
-
-	{
-		routeName: "darthmaul",
-		name: "Darth Maul",
-		role: "Sith Lord",
-		age: 200,
-		forcePoints: 1200		
-	},
-
-	{
-		routeName: "obiwankenobi",
-		name: "Obi Wan Kenobi",
-		role: "Jedi Master",
-		age: 55,
-		forcePoints: 1350
-	}
+var tables = [
+{
+	routeName: "",
+	name: "",
+	phone: "",
+	email: "",
+	uniqueId: ""
+},
+{
+	routeName: "",
+	name: "",
+	phone: "",
+	email: "",
+	uniqueId: ""
+},
+{
+	routeName: "",
+	name: "",
+	phone: "",
+	email: "",
+	uniqueId: ""
+},
+{
+	routeName: "",
+	name: "",
+	phone: "",
+	email: "",
+	uniqueId: ""
+},
+{
+	routeName: "",
+	name: "",
+	phone: "",
+	email: "",
+	uniqueId: ""
+}
 ]
+var counter = 0; 
 
-// Routes
-// =============================================================
-
-// Basic route that sends the user first to the AJAX Page
 app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname, 'view.html'));
 })
@@ -60,45 +79,33 @@ app.get('/all', function(req, res){
 	res.sendFile(path.join(__dirname, 'all.html'));
 })
 
-// Search for Specific Character (or all characters) - provides JSON
-app.get('/api/:characters?', function(req, res){
-
-	var chosen = req.params.characters;
-
-	if(chosen){
-		console.log(chosen);
-
-		for (var i=0; i <characters.length; i++){
-
-			if (chosen == characters[i].routeName){
-				res.json(characters[i]);
-				return;
-			}
+app.get('/api/:tables?', function(req, res){
+	var currentTable = req.params.tables;
+	//console.log(req);
+	if(currentTable){
+		console.log(currentTable);
+		for(var i = 0; i < tables.length; i++){
+			if()
 		}
-
-		res.json(false);
 	}
+} )
 
-	else{
-		res.json(characters);
-	}
-})
 
-// Create New Characters - takes in JSON input
-app.post('/api/new', function(req, res){
 
-	var newcharacter = req.body;
-	newcharacter.routeName = newcharacter.name.replace(/\s+/g, '').toLowerCase()
 
-	console.log(newcharacter);
 
-	characters.push(newcharacter);
 
-	res.json(newcharacter);
-})
 
-// Starts the server to begin listening 
-// =============================================================
-app.listen(PORT, function(){
-	console.log('App listening on PORT ' + PORT);
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
