@@ -10,43 +10,41 @@
 
 </head>
 <body>
-	
+
 	<div class="container">
+
 		<div class="jumbotron">
-			<h1>Hot Restaurant</h1>
-			<h3>Current Reservations and Waiting List</h3>
+			<h1 class="text-center"><span class="glyphicon glyphicon-fire"></span>Hot Tables<span class="glyphicon glyphicon-glass"></h1>
 			<hr>
-			<a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make Reservation</button></a>
-			<a href="/add"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> HOME</button></a>
+			<div class="text-center">
+				<h3 class="text-center">Current Reservations and Waiting List</h3>
+				<a href="/reserve"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
+				<a href="/"><button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span></button></a>
+			</div>
 		</div>
+
 		<div class="row">
-
 			<div class="col-lg-12">
-
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title"><strong>Current Reservations</strong></h3>
+						<h3 class="panel-title"><strong>Tables currently occupied</strong></h3>
 					</div>
 					<div class="panel-body" id="wellSection">
 
+<!-- replace this with the server generated code stuff -->
+						<div class="well">
+							<h2><span class="label label-primary">1</span> | Bigwig Gangsta</h2>
+						</div>
+						<div class="well">
+							<h2><span class="label label-primary">2</span> | Hiphop wana be</h2>
+						</div>
+<!-- end replace this with the server generated code stuff -->
 
-<!-- 						<div class="well">
-							<h2 id="name">Yoda</h2>
-
-
-							<div id="stats">
-								<h3><strong>Role:</strong> <span id="role">Jedi Master</span></h3>
-								<h3><strong>Age:</strong> <span id="age">900</span></h3>
-								<h3><strong>Force Points:</strong> <span id="forcePoints">2000</span></h3>
-							</div>
-						</div> -->
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-	</div>
 
-	</div>
 		<div class="row">
 
 			<div class="col-lg-12">
@@ -57,29 +55,27 @@
 					</div>
 					<div class="panel-body" id="wellSection">
 
+<!-- replace this with the server generated code stuff -->
+						<div class="well">
+							<h2><span class="label label-primary">1</span> | Little mans famaly</h2>
+						</div>
+						<div class="well">
+							<h2><span class="label label-primary">2</span> | Humble farmer out for a evening of pleasure </h2>
+						</div>
+<!-- end replace this with the server generated code stuff -->
 
-<!-- 						<div class="well">
-							<h2 id="name">Yoda</h2>
-
-
-							<div id="stats">
-								<h3><strong>Role:</strong> <span id="role">Jedi Master</span></h3>
-								<h3><strong>Age:</strong> <span id="age">900</span></h3>
-								<h3><strong>Force Points:</strong> <span id="forcePoints">2000</span></h3>
-							</div>
-						</div> -->
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
+		    <div class="container">
+      <a href="/api/clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
+    </div>
 	</div>
 
-	<footer>
-	link1, link2, link3
-	</footer>
 
 	<script type="text/javascript">
-		
+
 		var currentURL = window.location.origin;
 
 		console.log(currentURL + "/api");
@@ -90,12 +86,12 @@
 				var wellSection = $("<div>");
 				wellSection.addClass('well');
 				wellSection.attr('id', 'characterWell-' + i)
-				$('#wellSection').append(wellSection);				
+				$('#wellSection').append(wellSection);
 
 				$("#characterWell-" + i).append("<h2>" + data[i].name + "</h2>");
 				$("#characterWell-" + i).append("<h3>Role: " + data[i].role + "</h4>");
 				$("#characterWell-" + i).append("<h3>Age: " + data[i].age + "</h4>");
-				$("#characterWell-" + i).append("<h3>Force Points: " + data[i].forcePoints + "</h4>");	
+				$("#characterWell-" + i).append("<h3>Force Points: " + data[i].forcePoints + "</h4>");
 			}
 		})
 
