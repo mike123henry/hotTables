@@ -28,43 +28,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-var tables = [
-{
-	routeName: "",
-	name: "",
-	phone: "",
-	email: "",
-	uniqueId: ""
-},
-{
-	routeName: "",
-	name: "",
-	phone: "",
-	email: "",
-	uniqueId: ""
-},
-{
-	routeName: "",
-	name: "",
-	phone: "",
-	email: "",
-	uniqueId: ""
-},
-{
-	routeName: "",
-	name: "",
-	phone: "",
-	email: "",
-	uniqueId: ""
-},
-{
-	routeName: "",
-	name: "",
-	phone: "",
-	email: "",
-	uniqueId: ""
-}
-];
+var tables = [];
 var counter = 0;
 
 app.get('/', function(req, res){
@@ -79,6 +43,31 @@ app.get('/reserve', function(req, res){
 	res.sendFile(path.join(__dirname, 'reserve.html'));
 })
 
+// return al tables - provides JSON
+//app.get('/api/:characters?', function(req, res){
+
+	// var chosen = req.params.characters;
+
+	// if(chosen){
+	// 	console.log(chosen);
+
+	// 	for (var i=0; i <characters.length; i++){
+
+	// 		if (chosen == characters[i].routeName){
+	// 			res.json(characters[i]);
+	// 			return;
+	// 		}
+	// 	}
+
+	// 	res.json(false);
+	// }
+
+	// else{
+app.get('/api', function(req, res){
+		res.json(tables);
+	// }
+})
+
 // app.get('/api/:tables?', function(req, res){
 // 	var currentTable = req.params.tables;
 // 	//console.log(req);
@@ -90,7 +79,18 @@ app.get('/reserve', function(req, res){
 // 	}
 // } )
 
+// Create New Reservation - takes in JSON input
+app.post('/api/reserve', function(req, res){
 
+	var newreservation = req.body;
+
+
+	console.log(newreservation);
+
+	tables.push(newreservation);
+
+	res.json(newreservation);
+})
 
 
 

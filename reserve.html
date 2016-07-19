@@ -68,6 +68,32 @@
   	</div>
 	</div>
   <div class="container">
+	<script type="text/javascript">
 
+		// Question: What does this code do?
+		$('#addBtn').on("click", function(){
+
+			var newReservation =
+			{
+				name: $("#name").val().trim(),
+				phone: $("#phone").val().trim(),
+				email: $("#email").val().trim(),
+				uniqueID: $("#uniqueID").val().trim()
+			};
+
+			var currentURL = window.location.origin;
+
+			// post (push) the newReservation varaable to the server.js page (and it puts it into the tables variable)
+			$.post( currentURL + "/api/reserve", newReservation)
+				.done(function(data){
+					console.log(data);
+					alert("Adding Reservation for "+newReservation.uniqueID)
+				})
+
+			return false;
+
+		});
+
+	</script>
 </body>
 </html>
