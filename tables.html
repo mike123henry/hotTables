@@ -36,7 +36,7 @@
 							<h2><span class="label label-primary">1</span> | Bigwig Gangsta</h2>
 						</div>
 						<div class="well">
-							<h2><span class="label label-primary">2</span> | Hiphop wana be</h2>
+							<h2><span class="label label-primary">2</span> | Hiphop wanna be</h2>
 						</div>
  end replace this with the server generated code stuff -->
 
@@ -55,14 +55,14 @@
 					</div>
 					<div class="panel-body" id="waitSection">
 
-<!--  replace this with the server generated code stuff -->
+<!--  replace this with the server generated code stuff
 						<div class="well">
 							<h2><span class="label label-primary">1</span> | Little mans famaly</h2>
 						</div>
 						<div class="well">
 							<h2><span class="label label-primary">2</span> | Humble farmer out for a evening of pleasure </h2>
 						</div>
-<!--end replace this with the server generated code stuff-->
+end replace this with the server generated code stuff-->
 					</div>
 				</div>
 			</div>
@@ -96,11 +96,19 @@
 
 				$("#tableWell-" + i).append("<h2><span class='label label-primary'>" + (i+1) + "</span> | "+data[i].uniqueID+"</h2>");
 			}
+			if (data.length > 5) {
+				for (var i =0; i < data.length-5; i++){
+					var waitSection = $("<div>");
+					waitSection.addClass('well');
+					waitSection.attr('id', 'waitWell-' + i)
+					$('#waitSection').append(waitSection);
+
+					$("#waitWell-" + i).append("<h2><span class='label label-primary'>" + (i+1) + "</span> | "+data[i+5].uniqueID+"</h2>");
+			}
+			}
 		})
 
 	</script>
-						<div class="well">
-							<h2><span class="label label-primary">1</span> | Bigwig Gangsta</h2>
-						</div>
+
 </body>
 </html>
